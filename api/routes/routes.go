@@ -35,7 +35,9 @@ func SetupRoutes(handler *handlers.Handler) *mux.Router {
 	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(http.StatusOK)
-		_, _ = w.Write([]byte(`{"message": "Welcome to Go Project Template API", "version": "1.0.0"}`))
+		if _, err := w.Write([]byte(`{"message": "Welcome to Go Project Template API", "version": "1.0.0"}`)); err != nil {
+			logger.Error("Failed to write root response", zap.Error(err))
+		}
 	}).Methods("GET")
 
 	return router
