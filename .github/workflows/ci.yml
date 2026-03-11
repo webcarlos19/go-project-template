@@ -121,7 +121,7 @@ jobs:
         GOOS=darwin GOARCH=amd64 go build -o build/go-project-template-darwin-amd64 ./cmd/go-project-template/
 
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: binaries
         path: build/
